@@ -61,9 +61,7 @@ abstract class WordRoomDatabase : RoomDatabase() {
             }
         }
 
-        private class WordDatabaseCallback(
-            private val scope: CoroutineScope
-        ) : RoomDatabase.Callback() {
+        private class WordDatabaseCallback( private val scope: CoroutineScope) : RoomDatabase.Callback() {
             /**
              * Override the onCreate method to populate the database.
              */
