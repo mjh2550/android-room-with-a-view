@@ -34,8 +34,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface WordDao {
 
-    // The flow always holds/caches latest version of data. Notifies its observers when the
-    // data has changed.
+    // Flow는 항상 최신 버전의 데이터를 보유/캐시합니다. 관찰자에게 알립니다.
+    // 데이터가 변경되었습니다.
     @Query("SELECT * FROM word_table ORDER BY word ASC")
     fun getAlphabetizedWords(): Flow<List<Word>>
 

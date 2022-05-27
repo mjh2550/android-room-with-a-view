@@ -24,13 +24,13 @@ import kotlinx.coroutines.flow.Flow
  */
 class WordRepository(private val wordDao: WordDao) {
 
-    // Room executes all queries on a separate thread.
-    // Observed Flow will notify the observer when the data has changed.
+    // Room은 별도의 스레드에서 모든 쿼리를 실행합니다.
+    // Observed Flow는 데이터가 변경되면 관찰자에게 알립니다.
     val allWords: Flow<List<Word>> = wordDao.getAlphabetizedWords()
 
-    // By default Room runs suspend queries off the main thread, therefore, we don't need to
-    // implement anything else to ensure we're not doing long running database work
-    // off the main thread.
+    // 기본적으로 Room은 메인 스레드에서 일시 중단 쿼리를 실행하므로 다음을 수행할 필요가 없습니다.
+    // 장기 실행 데이터베이스 작업을 하지 않도록 다른 것을 구현합니다.
+    // 메인 스레드를 끕니다.
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(word: Word) {

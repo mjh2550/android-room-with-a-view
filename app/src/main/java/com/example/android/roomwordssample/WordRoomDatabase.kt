@@ -26,8 +26,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
- * This is the backend. The database. This used to be done by the OpenHelper.
- * The fact that this has very few comments emphasizes its coolness.
+ * 이것이 백엔드입니다. 데이터베이스. 이것은 OpenHelper에 의해 수행되었습니다.
+ * 댓글이 거의 없다는 점이 시원함을 강조합니다.
  */
 @Database(entities = [Word::class], version = 1)
 abstract class WordRoomDatabase : RoomDatabase() {
@@ -42,16 +42,16 @@ abstract class WordRoomDatabase : RoomDatabase() {
             context: Context,
             scope: CoroutineScope
         ): WordRoomDatabase {
-            // if the INSTANCE is not null, then return it,
-            // if it is, then create the database
+            //INSTANCE가 null이 아니면 반환합니다.
+            // null이면 데이터베이스 생성
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     WordRoomDatabase::class.java,
                     "word_database"
                 )
-                    // Wipes and rebuilds instead of migrating if no Migration object.
-                    // Migration is not part of this codelab.
+                    // 마이그레이션 개체가 없으면 마이그레이션하는 대신 지우고 다시 빌드합니다.
+                    // 마이그레이션은 이 코드랩의 일부가 아닙니다.
                     .fallbackToDestructiveMigration()
                     .addCallback(WordDatabaseCallback(scope))
                     .build()
@@ -67,8 +67,8 @@ abstract class WordRoomDatabase : RoomDatabase() {
              */
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
-                // If you want to keep the data through app restarts,
-                // comment out the following line.
+                // 앱을 다시 시작해도 데이터를 유지하고 싶다면,
+                // 다음 줄을 주석 처리합니다.
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
                         populateDatabase(database.wordDao())
@@ -78,12 +78,12 @@ abstract class WordRoomDatabase : RoomDatabase() {
         }
 
         /**
-         * Populate the database in a new coroutine.
-         * If you want to start with more words, just add them.
+         * 새 코루틴에서 데이터베이스를 채웁니다.
+         * 더 많은 단어로 시작하려면 단어를 추가하세요.
          */
         suspend fun populateDatabase(wordDao: WordDao) {
-            // Start the app with a clean database every time.
-            // Not needed if you only populate on creation.
+            // 앱을 다시 시작해도 데이터를 유지하고 싶다면,
+            // 다음 줄을 주석 처리합니다.
             wordDao.deleteAll()
 
             var word = Word("Hello")

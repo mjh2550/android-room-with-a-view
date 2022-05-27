@@ -30,10 +30,10 @@ import kotlinx.coroutines.launch
 
 class WordViewModel(private val repository: WordRepository) : ViewModel() {
 
-    // Using LiveData and caching what allWords returns has several benefits:
-    // - We can put an observer on the data (instead of polling for changes) and only update the
-    //   the UI when the data actually changes.
-    // - Repository is completely separated from the UI through the ViewModel.
+    // LiveData를 사용하고 allWords가 반환하는 것을 캐싱하면 몇 가지 이점이 있습니다.
+    // - 우리는 (변경 사항을 폴링하는 대신) 데이터에 관찰자를 배치하고 업데이트만 할 수 있습니다.
+    // 데이터가 실제로 변경될 때의 UI.
+    // - Repository는 ViewModel을 통해 UI와 완전히 분리됩니다.
     val allWords: LiveData<List<Word>> = repository.allWords.asLiveData()
 
     /**

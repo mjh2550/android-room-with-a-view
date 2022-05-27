@@ -21,11 +21,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
 class WordsApplication : Application() {
-    // No need to cancel this scope as it'll be torn down with the process
+    // 이 스코프는 프로세스와 함께 삭제되므로 취소할 필요가 없습니다.
     val applicationScope = CoroutineScope(SupervisorJob())
 
-    // Using by lazy so the database and the repository are only created when they're needed
-    // rather than when the application starts
+    // 응용 프로그램이 시작될 때가 아니라 필요할 때만 데이터베이스와 저장소가 생성되도록 lazy사용
     val database by lazy { WordRoomDatabase.getDatabase(this, applicationScope) }
     val repository by lazy { WordRepository(database.wordDao()) }
 }

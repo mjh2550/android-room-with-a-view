@@ -21,13 +21,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
- * A basic class representing an entity that is a row in a one-column database table.
+ * 1열 데이터베이스 테이블의 행인 엔터티를 나타내는 기본 클래스입니다.
  *
- * @ Entity - You must annotate the class as an entity and supply a table name if not class name.
- * @ PrimaryKey - You must identify the primary key.
- * @ ColumnInfo - You must supply the column name if it is different from the variable name.
+ * @ Entity - 클래스 이름이 아닌 경우 클래스에 엔티티로 주석을 달고 테이블 이름을 제공해야 합니다.
+ * @ PrimaryKey - 기본 키를 식별해야 합니다.
+ * @ ColumnInfo - 변수명과 다른 경우 컬럼명을 입력해야 합니다.
  *
- * See the documentation for the full rich set of annotations.
+ * 주석 세트에 대한 설명서를 참조하십시오.
  * https://developer.android.com/topic/libraries/architecture/room.html
  */
 
