@@ -23,10 +23,10 @@ import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 /**
- * The Room Magic is in this file, where you map a method call to an SQL query.
+ * Room Magic은 메서드 호출을 SQL 쿼리에 매핑하는 이 파일에 있습니다.
  *
- * When you are using complex data types, such as Date, you have to also supply type converters.
- * To keep this example basic, no types that require type converters are used.
+ * Date와 같은 복잡한 데이터 유형을 사용하는 경우 유형 변환기도 제공해야 합니다.
+ * 이 예제를 기본적으로 유지하기 위해 유형 변환기가 필요한 유형은 사용되지 않습니다.
  * See the documentation at
  * https://developer.android.com/topic/libraries/architecture/room.html#type-converters
  */

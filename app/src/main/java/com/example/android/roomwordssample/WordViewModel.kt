@@ -24,8 +24,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 /**
- * View Model to keep a reference to the word repository and
- * an up-to-date list of all words.
+ * 리포지토리라는 단어에 대한 참조를 유지하는 모델 보기 및
+ * 모든 단어의 최신 목록.
  */
 
 class WordViewModel(private val repository: WordRepository) : ViewModel() {
