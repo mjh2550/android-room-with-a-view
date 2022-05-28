@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Book::class], version = 1)
+@Database(entities = [Book::class], version = 2)
 abstract class BookRoomDatabase : RoomDatabase(){
 
     abstract fun bookDao() : BookDao
@@ -29,6 +29,7 @@ abstract class BookRoomDatabase : RoomDatabase(){
                     BookRoomDatabase::class.java,
                     "book_database"
                 )
+                    .fallbackToDestructiveMigration()
                     .addCallback(BookRoomDatabaseCallBack(scope))
                     .build()
                 INSTANCE = instance
@@ -53,7 +54,7 @@ abstract class BookRoomDatabase : RoomDatabase(){
 
             bookDao.deleteAll()
 
-            var book = Book(null,"History","SeJong King","unknown","")
+            var book = Book(0,"History","SeJong King","unknown","")
             bookDao.insert(book)
 
         }

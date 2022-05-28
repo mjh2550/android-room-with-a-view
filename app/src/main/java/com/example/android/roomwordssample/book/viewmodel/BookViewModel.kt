@@ -14,6 +14,10 @@ class BookViewModel(private val repository: BookRepository) : ViewModel() {
         repository.insert(book)
     }
 
+    fun deleteAll() = viewModelScope.launch {
+        repository.deleteAll()
+    }
+
 }
 
 class BookViewModelFactory(private val repository: BookRepository) : ViewModelProvider.Factory{

@@ -12,4 +12,9 @@ class BookRepository(private val bookDao: BookDao) {
         bookDao.insert(book)
     }
 
+    @WorkerThread
+    suspend fun deleteAll(){
+        bookDao.deleteAll()
+    }
+
 }
