@@ -3,6 +3,7 @@ package com.example.android.roomwordssample.book
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -12,11 +13,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.roomwordssample.R
 import com.example.android.roomwordssample.book.adapter.BookLiveListAdapter
 import com.example.android.roomwordssample.book.data.Book
+import com.example.android.roomwordssample.book.data.BookRepository
+import com.example.android.roomwordssample.book.data.DataModule
 import com.example.android.roomwordssample.book.viewmodel.BookViewModel
 import com.example.android.roomwordssample.book.viewmodel.BookViewModelFactory
 import com.example.android.roomwordssample.util.BookParcelableClass
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainBookActivity : AppCompatActivity(),View.OnClickListener{
 
     companion object{
@@ -27,6 +33,8 @@ class MainBookActivity : AppCompatActivity(),View.OnClickListener{
         BookViewModelFactory((application as BookApplication).repository)
     }
 
+    @Inject lateinit var test :String
+
     lateinit var recyclerView: RecyclerView
     lateinit var btn_delete : Button
     lateinit var btn_flaotingAction :FloatingActionButton
@@ -35,6 +43,8 @@ class MainBookActivity : AppCompatActivity(),View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_book)
+
+        Log.d("testString : ", "$test")
 
         initBinding()
         initObserving()
