@@ -3,9 +3,11 @@ package com.example.android.roomwordssample.book
 import android.app.Application
 import com.example.android.roomwordssample.book.data.BookRepository
 import com.example.android.roomwordssample.book.data.BookRoomDatabase
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
+@HiltAndroidApp
 class BookApplication :Application(){
     val applicationScope = CoroutineScope(SupervisorJob())
 
